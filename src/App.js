@@ -1,12 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Landing from "./Landing";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -24,3 +25,17 @@ function App() {
 }
 
 export default App;
+
+// export default class App extends Component {
+//   render() {
+//     return (
+//       <BrowserRouter>
+//         <div className="App">
+//           <Switch>
+//             <Route exact path="/" component={Landing} />
+//           </Switch>
+//         </div>
+//       </BrowserRouter>
+//     );
+//   }
+// }
