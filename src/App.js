@@ -1,30 +1,9 @@
 import React from "react";
-import "./App.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Landing from "./Landing";
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+// import React, { Component } from "react";
+// import "./App.css";
+// import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import Landing from "./screen/Landing";
+// import Cities from "./screen/Cities";
 
 // export default class App extends Component {
 //   render() {
@@ -33,9 +12,39 @@ export default App;
 //         <div className="App">
 //           <Switch>
 //             <Route exact path="/" component={Landing} />
+//             <Route exact path="/cities" component={Cities} />
 //           </Switch>
 //         </div>
 //       </BrowserRouter>
 //     );
 //   }
 // }
+
+export default class FetchData extends React.Component {
+  state = {
+    loading: true
+    // city: null
+  };
+
+  async componentDidMount() {
+    const url = "http://localhost:5000/cities/all";
+    const response = await fetch(url);
+    const data = await response.json();
+    // this.setState({ city: data.results[0], loading: false });
+    console.log(data);
+  }
+
+  render() {
+    return (
+      <div>
+        {/* {this.state.loading || !this.state.city ? ( */}
+
+        {this.state.loading ? (
+          <div> loading... </div>
+        ) : (
+          <div> city example</div>
+        )}
+      </div>
+    );
+  }
+}
