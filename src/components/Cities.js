@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-
-export default class Cities extends React.Component {
+import { fetchData } from "../store/actions/cityActions";
+export class Cities extends React.Component {
+  // export default class Cities extends React.Component {
   //   state = {
   //     loading: true,
   //     cities: []
@@ -19,6 +20,11 @@ export default class Cities extends React.Component {
   //     }
   //   }
 
+  componentDidMount() {
+    console.log(this.props);
+    this.props.fetchData();
+  }
+
   constructor(props) {
     super(props);
 
@@ -34,9 +40,11 @@ export default class Cities extends React.Component {
   }
 
   render() {
-    // FILTER - WHY IS CITY.CITY ?
-    const filteredCities = this.state.cities.filter(city => {
-      return city.city.toLowerCase().includes(this.state.search.toLowerCase());
+    console.log(this.props);
+    const filteredCities = this.props.cities.filter(cityObject => {
+      return cityObject.city
+        .toLowerCase()
+        .includes(this.state.search.toLowerCase());
     });
 
     return (
@@ -47,7 +55,7 @@ export default class Cities extends React.Component {
           onChange={this.updateSearch.bind(this)}
         />
 
-        {this.state.loading ? (
+        {this.props.loading ? (
           <div> loading... </div>
         ) : (
           <div>
@@ -56,7 +64,7 @@ export default class Cities extends React.Component {
                 <div key={places._id}>
                   {places.city}, {places.country}{" "}
                   <div>
-                    <img src={places.url} />
+                    <img src={places.url} alt="cool_cities" />
                   </div>
                 </div>
               ))}
@@ -66,3 +74,16 @@ export default class Cities extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  cities: state.cities.items,
+  loading: state.cities.loading,
+  error: state.cities.error
+});
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchData: () => dispatch(fetchData())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cities);
