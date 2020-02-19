@@ -1,21 +1,23 @@
 import React from "react";
-export default class Cities extends React.Component {
-  state = {
-    loading: true,
-    cities: []
-  };
+import { connect } from "react-redux";
 
-  async componentDidMount() {
-    const url = "http://localhost:5000/cities/all";
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      this.setState({ cities: data, loading: false });
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+export default class Cities extends React.Component {
+  //   state = {
+  //     loading: true,
+  //     cities: []
+  //   };
+
+  //   async componentDidMount() {
+  //     const url = "http://localhost:5000/cities/all";
+  //     try {
+  //       const response = await fetch(url);
+  //       const data = await response.json();
+  //       this.setState({ cities: data, loading: false });
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
 
   constructor(props) {
     super(props);
@@ -32,7 +34,7 @@ export default class Cities extends React.Component {
   }
 
   render() {
-    // FILTER
+    // FILTER - WHY IS CITY.CITY ?
     const filteredCities = this.state.cities.filter(city => {
       return city.city.toLowerCase().includes(this.state.search.toLowerCase());
     });
