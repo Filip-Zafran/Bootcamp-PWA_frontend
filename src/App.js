@@ -6,6 +6,10 @@ import Cities from "./components/Cities";
 import Login from "./components/LogIn";
 import Signup from "./components/SignUp";
 
+// import Itinerary from "./components/Itinerary";
+
+//  add dynamic route for Itinerary
+
 export default class App extends Component {
   render() {
     return (
