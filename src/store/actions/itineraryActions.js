@@ -1,6 +1,6 @@
 export function fetchData(key) {
   return dispatch => {
-    dispatch(fetchCitiesStart());
+    dispatch(fetchItinerariesStart());
     fetch(`http://localhost:5000/cities/${key}`)
       .then(res => res.json())
       .then(res => {
@@ -22,7 +22,7 @@ export const fetchItinerariesStart = () => {
   };
 };
 
-export const fetchCitiesSuccess = cities => ({
+export const fetchItinerariesSuccess = itineraries => ({
   type: FETCH_ITINERARIES_START,
   payload: { itineraries, msg: "great_success" }
 });

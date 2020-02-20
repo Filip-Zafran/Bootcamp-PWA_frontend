@@ -5,10 +5,7 @@ import Landing from "./screen/Landing";
 import Cities from "./components/Cities";
 import Login from "./components/LogIn";
 import Signup from "./components/SignUp";
-
-// import Itinerary from "./components/Itinerary";
-
-//  add dynamic route for Itinerary
+import Itineraries from "./components/Itinerary";
 
 export default class App extends Component {
   render() {
@@ -18,6 +15,10 @@ export default class App extends Component {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/cities" component={Cities} />
+            {/* 
+            //  dynamic route for Itinerary */}
+            <Route exact path="/itineraries/:key" component={Itineraries} />
+            >
             <Route exact path="/Login" component={Login} />
             <Route exact path="/Signup" component={Signup} />
           </Switch>
