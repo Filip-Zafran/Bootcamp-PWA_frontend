@@ -1,4 +1,4 @@
-export function fetchData() {
+export function fetchCities() {
   return dispatch => {
     dispatch(fetchCitiesStart());
     fetch("http://localhost:5000/cities/all")

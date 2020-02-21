@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchData } from "../store/actions/cityActions";
+import { fetchCities } from "../store/actions/cityActions";
 export class Cities extends React.Component {
   // export default class Cities extends React.Component {
   //   state = {
@@ -22,7 +22,7 @@ export class Cities extends React.Component {
 
   componentDidMount() {
     console.log(this.props);
-    this.props.fetchData();
+    this.props.fetchCities();
   }
 
   constructor(props) {
@@ -82,7 +82,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => {
   return {
-    fetchData: () => dispatch(fetchData())
+    fetchCities: () => dispatch(fetchCities())
   };
 };
 

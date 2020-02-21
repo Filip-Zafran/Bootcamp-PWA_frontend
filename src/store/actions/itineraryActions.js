@@ -1,4 +1,4 @@
-export function fetchData(key) {
+export function fetchItineraries(key) {
   return dispatch => {
     dispatch(fetchItinerariesStart());
     fetch(`http://localhost:5000/cities/${key}`)
