@@ -1,9 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchItineraries } from "../store/actions/itineraryActions";
-export class Itineraries extends React.Component {
+// only if I add actions to itinerariries
+// import { Link } from "react-router-dom";
+
+class Itineraries extends React.Component {
   componentDidMount() {
-    console.log(this.props);
+    console.log(this.props.match.params.key);
     this.props.fetchItineraries();
   }
 
@@ -22,7 +25,6 @@ export class Itineraries extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const filteredItineraries = this.props.itineraries.filter(
       itineraryObject => {
         return itineraryObject.itinerary
@@ -33,6 +35,7 @@ export class Itineraries extends React.Component {
 
     return (
       <div>
+        <p>Welcome to {this.props.match.params.key}</p>
         <input
           type="text"
           value={this.state.search}
@@ -60,10 +63,10 @@ export class Itineraries extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  itineraries: state.itineraries.items,
-  loading: state.itineraries.loading,
-  error: state.itineraries.error
+const mapToProps = state => ({
+  itineraries: state.itineraries,
+  loading: state.itineraries,
+  error: state.itineraries
 });
 const mapDispatchToProps = dispatch => {
   return {
@@ -71,4 +74,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Itineraries);
+export default connect(mapToProps, mapDispatchToProps)(Itineraries);

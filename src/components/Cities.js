@@ -1,27 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchCities } from "../store/actions/cityActions";
-export class Cities extends React.Component {
-  // export default class Cities extends React.Component {
-  //   state = {
-  //     loading: true,
-  //     cities: []
-  //   };
+import { Link } from "react-router-dom";
 
-  //   async componentDidMount() {
-  //     const url = "http://localhost:5000/cities/all";
-  //     try {
-  //       const response = await fetch(url);
-  //       const data = await response.json();
-  //       this.setState({ cities: data, loading: false });
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-
+class Cities extends React.Component {
   componentDidMount() {
-    console.log(this.props);
+    console.log(this.props.match.params.key);
     this.props.fetchCities();
   }
 
@@ -40,7 +24,6 @@ export class Cities extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const filteredCities = this.props.cities.filter(cityObject => {
       return cityObject.city
         .toLowerCase()
@@ -49,11 +32,21 @@ export class Cities extends React.Component {
 
     return (
       <div>
+        <p style={{ color: "blue" }}>
+          My next stop is...{this.props.match.params.key}
+        </p>
         <input
           type="text"
           value={this.state.search}
           onChange={this.updateSearch.bind(this)}
         />
+
+        {/*         
+const styles = StyleSheet.create({
+    bold: {fontWeight: 'bold'},
+    italic: {fontStyle: 'italic'},
+    underline: {textDecorationLine: 'underline'}
+}); */}
 
         {this.props.loading ? (
           <div> loading... </div>
@@ -64,7 +57,13 @@ export class Cities extends React.Component {
                 <div key={places._id}>
                   {places.city}, {places.country}{" "}
                   <div>
-                    <img src={places.url} alt="cool_cities" />
+                    <Link to={"/itineraries/" + places.city}>
+                      <img
+                        style={{ height: "30%", width: "45%" }}
+                        src={places.url}
+                        // alt="cool_cities"
+                      />
+                    </Link>
                   </div>
                 </div>
               ))}
