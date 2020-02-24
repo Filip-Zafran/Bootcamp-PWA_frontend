@@ -1,32 +1,59 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import Symbol_circled from "../../wireframe/logos/circled-right-2.png";
+import RightArrow from "../../src/logos/circled-right-2.png";
+import Logo from "../../src/logos/MYtineraryLogo2.png";
 
 export default function Landing() {
   return (
-    <div>
-      <h1>Land</h1>
-      <Link to="/cities">
+    <div
+      style={{
+        background: "linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4)"
+      }}
+    >
+      <h1>Mytinerary</h1>
+      <h3>All your travels accesable in a few seconds</h3>
+      {/* <Link to="/cities">
         <button> Find Your City</button>
+      </Link> */}
+      {"\n"}
+
+      <div
+        style={{
+          display: "grid",
+          flex: "row",
+          padding: "5px"
+        }}
+      >
+        <Link to="/SignUp">
+          <button> Sign Up</button>
+        </Link>
+        <Link to="/LogIn">
+          <button> Log In </button>
+        </Link>
+        {"\n"}
+      </div>
+
+      <Link to="/cities">
+        <img
+          style={{
+            width: "40%",
+            padding: "10px"
+          }}
+          src={RightArrow}
+          alt="Right Arrow symbol"
+        />
       </Link>
+      {"\n"}
 
-      <Link to="/SignUp">
-        <button> Sign Up</button>
-      </Link>
-
-      <Link to="/LogIn">
-        <button> Log In </button>
-      </Link>
-
-      {/* <Link to="/Symbol_circled">
-          <img src={Symbol_circled} alt=“symbol for circle" />
-    </Link>
-       */}
-      <div>{/* <img src={Symbol_circled} alt="symbol for circle" /> */}</div>
-
-      {/* <div className="logo">
-                <img src={logo} alt="logo"/>
-            </div> */}
+      <img
+        style={{
+          width: "90%",
+          padding: "10px",
+          borderRadius: "12%"
+        }}
+        src={Logo}
+        alt="logo"
+      />
     </div>
   );
 }

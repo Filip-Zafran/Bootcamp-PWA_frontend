@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchCities } from "../store/actions/cityActions";
 import { Link } from "react-router-dom";
+import Home from "../logos/home.png";
 
 class Cities extends React.Component {
   componentDidMount() {
@@ -31,22 +32,34 @@ class Cities extends React.Component {
     });
 
     return (
-      <div>
+      <div
+        style={{
+          background:
+            "linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4)"
+        }}
+      >
+        {/* TU SKUZI KOJI LINK IDE ZA LANDING */}
+        {/* <Link to="/cities">
+          <img
+            style={{
+              width: "10%",
+              padding: "10px"
+            }}
+            src={Home}
+            alt="home symbol"
+          />
+        </Link> */}
+
         <p style={{ color: "blue" }}>
-          My next stop is...{this.props.match.params.key}
+          <i>My next stop is...{this.props.match.params.key}</i>
         </p>
+
         <input
+          style={{ paddingBottom: "15px", marginBottom: "20px" }}
           type="text"
           value={this.state.search}
           onChange={this.updateSearch.bind(this)}
         />
-
-        {/*         
-const styles = StyleSheet.create({
-    bold: {fontWeight: 'bold'},
-    italic: {fontStyle: 'italic'},
-    underline: {textDecorationLine: 'underline'}
-}); */}
 
         {this.props.loading ? (
           <div> loading... </div>

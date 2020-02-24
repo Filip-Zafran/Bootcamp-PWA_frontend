@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchItineraries } from "../store/actions/itineraryActions";
-// only if I add actions to itinerariries
-// import { Link } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 
 class Itineraries extends React.Component {
   componentDidMount() {
@@ -47,7 +47,13 @@ class Itineraries extends React.Component {
                 {places.price}, {places.hashtags}{" "}
               </p>
               <div>
-                <img src={places.url} alt="cool_activities" />
+                <img
+                  style={{ width: "85%" }}
+                  src={places.url}
+                  // alt="cool_cities"
+                />
+
+                {/* <img src={places.url} alt="cool_activities" /> */}
               </div>
             </div>
           ))
