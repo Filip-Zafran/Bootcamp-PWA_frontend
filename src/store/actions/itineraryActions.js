@@ -1,18 +1,12 @@
 export function fetchItineraries(key) {
   return dispatch => {
     dispatch(fetchItinerariesStart());
-    fetch(`http://localhost:5000/cities/${key}`)
+    fetch(`http://localhost:5000/itineraries/${key}`)
       .then(res => res.json())
       .then(res => {
-        if (res.error) {
-          throw res.error;
-        }
         dispatch(fetchItinerariesSuccess(res));
-        return res;
       })
-      .catch(error => {
-        dispatch(fetchItinerariesMeh(error));
-      });
+      .catch(error => dispatch(fetchItinerariesMeh(error)));
   };
 }
 
@@ -23,7 +17,7 @@ export const fetchItinerariesStart = () => {
 };
 
 export const fetchItinerariesSuccess = itineraries => ({
-  type: FETCH_ITINERARIES_START,
+  type: FETCH_ITINERARIES_SUCCESS,
   payload: { itineraries, msg: "great_success" }
 });
 

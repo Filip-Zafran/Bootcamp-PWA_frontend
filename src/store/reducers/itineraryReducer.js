@@ -11,6 +11,7 @@ const initialState = {
 };
 
 export default function itineraryReducer(state = initialState, action) {
+  console.log("action.type", action.type);
   switch (action.type) {
     case FETCH_ITINERARIES_START:
       return {
@@ -20,6 +21,7 @@ export default function itineraryReducer(state = initialState, action) {
       };
 
     case FETCH_ITINERARIES_SUCCESS:
+      console.log(action.payload);
       return {
         ...state,
         loading: false,

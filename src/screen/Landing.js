@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Symbol_circled from "../../wireframe/logos/circled-right-2.png";
+// import Symbol_circled from "../../wireframe/logos/circled-right-2.png";
 
 export default function Landing() {
   return (
@@ -22,9 +22,7 @@ export default function Landing() {
           <img src={Symbol_circled} alt=“symbol for circle" />
     </Link>
        */}
-      <div>
-        <img src={Symbol_circled} alt="symbol for circle" />
-      </div>
+      <div>{/* <img src={Symbol_circled} alt="symbol for circle" /> */}</div>
 
       {/* <div className="logo">
                 <img src={logo} alt="logo"/>
