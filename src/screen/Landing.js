@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import RightArrow from "../../src/logos/circled-right-2.png";
+import RightArrow from "../../src/logos/krug3.png";
 import Logo from "../../src/logos/MYtineraryLogo2.png";
 
 export default function Landing() {
@@ -36,7 +36,7 @@ export default function Landing() {
       <Link to="/cities">
         <img
           style={{
-            width: "40%",
+            width: "80%",
             padding: "10px"
           }}
           src={RightArrow}

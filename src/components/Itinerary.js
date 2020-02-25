@@ -4,6 +4,7 @@ import { fetchItineraries } from "../store/actions/itineraryActions";
 
 import { Link } from "react-router-dom";
 import Home from "../logos/home.png";
+import Back from "../logos/circled-left-2.png";
 
 class Itineraries extends React.Component {
   componentDidMount() {
@@ -37,6 +38,18 @@ class Itineraries extends React.Component {
 
     return (
       <div>
+        <Link to="/cities">
+          <img
+            className="backImg"
+            style={{
+              width: "10%",
+              padding: "10px"
+            }}
+            src={Back}
+            alt="back symbol"
+          />
+        </Link>
+
         <Link to="/">
           <img
             className="homeImg"
@@ -48,6 +61,7 @@ class Itineraries extends React.Component {
             alt="home symbol"
           />
         </Link>
+
         <p
           style={{
             fontSize: "40px",
