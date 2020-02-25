@@ -47,65 +47,131 @@ export default class SignUp extends Component {
 
         <form
           style={{
-            background:
-              "linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4)"
+            display: "inlineBlock",
+            textAlign: "left",
+            margin: "10%",
+            width: "80%"
           }}
         >
-          <label>
-            User Name:
+          <div
+            style={{
+              display: "flex"
+            }}
+          >
+            <label
+              style={{
+                flex: "2"
+              }}
+            >
+              User Name:&nbsp;&nbsp;
+            </label>
+
             <input
-              name="userName"
+              style={{
+                flex: "3"
+              }}
+              name="name"
               type="text"
               value={this.state.userName}
               onChange={this.handleChange("name")}
             />
-          </label>
+          </div>
           <br />
-          <br />
-          <label>
-            Create Password:
+          <div
+            style={{
+              display: "flex"
+            }}
+          >
+            <label
+              style={{
+                flex: "2"
+              }}
+            >
+              Create Password:&nbsp;&nbsp;
+            </label>
             <input
+              style={{
+                flex: "3"
+              }}
               name="createPass"
               type="text"
               value={this.state.createPass}
               onChange={this.handleChange}
             />
-          </label>
+          </div>
           <br />
-          <br />
-          <label>
-            Repeat Password:
+          <div
+            style={{
+              display: "flex"
+            }}
+          >
+            <label
+              style={{
+                flex: "2"
+              }}
+            >
+              Repeat Password:&nbsp;&nbsp;
+            </label>
+
             <input
+              style={{
+                flex: "3"
+              }}
               name="repeatPass"
               type="text"
               value={this.state.repeatPass}
               onChange={this.handleChange}
             />
-          </label>
+          </div>
           <br />
-          <br />
-          <label>
-            e-mail:
+          <div
+            style={{
+              display: "flex"
+            }}
+          >
+            <label
+              style={{
+                flex: "2"
+              }}
+            >
+              e-mail:&nbsp;&nbsp;
+            </label>
             <input
+              style={{
+                flex: "3"
+              }}
               name="email"
               type="text"
               value={this.state.email}
               onChange={this.handleChange}
             />
-          </label>
-          <br /> <br />
-          <label>
-            Profile Picture (link):
+          </div>
+          <br />
+          <div
+            style={{
+              display: "flex"
+            }}
+          >
+            <label
+              style={{
+                flex: "2"
+              }}
+            >
+              Profile Picture (link):&nbsp;&nbsp;
+            </label>
             <input
-              name="profilePic"
+              style={{
+                flex: "3"
+              }}
+              name="avatar"
               type="url"
               value={this.state.email}
               onChange={this.profilePic}
             />
-          </label>
+          </div>
         </form>
         <br />
-        <br />
+
         <input type="submit" value="Submit" />
       </React.Fragment>
     );

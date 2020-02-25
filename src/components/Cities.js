@@ -50,7 +50,11 @@ class Cities extends React.Component {
         </p>
 
         <input
-          style={{ paddingBottom: "15px", marginBottom: "20px" }}
+          style={{
+            fontSize: "20px",
+            height: "35px",
+            marginBottom: "20px"
+          }}
           type="text"
           value={this.state.search}
           onChange={this.updateSearch.bind(this)}

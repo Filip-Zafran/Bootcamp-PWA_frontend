@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Home from "../logos/home.png";
 
+// probaj kopirat Sign up JS komponentu
+
 export default function Login() {
   return (
     <div>
-      <h1>log in</h1>
       <Link to="/">
         <img
           className="homeImg"
@@ -17,6 +18,7 @@ export default function Login() {
           alt="home symbol"
         />
       </Link>
+      <h1>log in</h1>
     </div>
   );
 }
