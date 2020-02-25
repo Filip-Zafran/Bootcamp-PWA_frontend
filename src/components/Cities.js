@@ -32,15 +32,10 @@ class Cities extends React.Component {
     });
 
     return (
-      <div
-        style={{
-          background:
-            "linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4)"
-        }}
-      >
-        {/* TU SKUZI KOJI LINK IDE ZA LANDING */}
-        {/* <Link to="/cities">
+      <div>
+        <Link to="/">
           <img
+            className="homeImg"
             style={{
               width: "10%",
               padding: "10px"
@@ -48,7 +43,7 @@ class Cities extends React.Component {
             src={Home}
             alt="home symbol"
           />
-        </Link> */}
+        </Link>
 
         <p style={{ color: "blue" }}>
           <i>My next stop is...{this.props.match.params.key}</i>
@@ -72,9 +67,13 @@ class Cities extends React.Component {
                   <div>
                     <Link to={"/itineraries/" + places.city}>
                       <img
-                        style={{ height: "30%", width: "45%" }}
+                        style={{
+                          height: "30%",
+                          width: "45%",
+                          paddingEnd: "15px"
+                        }}
                         src={places.url}
-                        // alt="cool_cities"
+                        alt="cool_cities"
                       />
                     </Link>
                   </div>

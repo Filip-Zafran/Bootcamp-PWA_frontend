@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Home from "../logos/home.png";
+import { Link } from "react-router-dom";
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -27,15 +29,21 @@ export default class SignUp extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1
-          style={{
-            background:
-              "linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4)"
-          }}
-        >
-          {" "}
-          Register here
-        </h1>
+        <div>
+          <Link to="/">
+            <img
+              className="homeImg"
+              style={{
+                width: "10%",
+                padding: "10px"
+              }}
+              src={Home}
+              alt="home symbol"
+            />
+          </Link>
+        </div>
+
+        <h1>Register here</h1>
 
         <form
           style={{

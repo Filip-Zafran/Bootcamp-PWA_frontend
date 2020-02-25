@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchItineraries } from "../store/actions/itineraryActions";
 
 import { Link } from "react-router-dom";
+import Home from "../logos/home.png";
 
 class Itineraries extends React.Component {
   componentDidMount() {
@@ -36,7 +37,39 @@ class Itineraries extends React.Component {
 
     return (
       <div>
-        <p>Welcome to {this.props.match.params.key}</p>
+        <Link to="/">
+          <img
+            className="homeImg"
+            style={{
+              width: "10%",
+              padding: "10px"
+            }}
+            src={Home}
+            alt="home symbol"
+          />
+        </Link>
+        <p
+          style={{
+            fontSize: "40px",
+            fontDecoration: "strong",
+            padding: "2px",
+            margin: "2px"
+          }}
+        >
+          {" "}
+          <u>
+            <b>{this.props.match.params.key}</b>
+          </u>
+        </p>
+
+        <r
+          style={{
+            fontSize: "20px"
+            // marginBottom: "30px"
+          }}
+        >
+          <i>has something for everyone:</i>
+        </r>
         {this.props.loading ? (
           <div> loading... </div>
         ) : (
@@ -50,7 +83,7 @@ class Itineraries extends React.Component {
                 <img
                   style={{ width: "85%" }}
                   src={places.url}
-                  // alt="cool_cities"
+                  alt="cool_cities"
                 />
 
                 {/* <img src={places.url} alt="cool_activities" /> */}
@@ -88,6 +121,7 @@ class Itineraries extends React.Component {
   //   }
   // }
 }
+
 const mapStateToProps = state => {
   console.log("state", state);
   return {

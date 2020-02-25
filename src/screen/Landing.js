@@ -11,7 +11,7 @@ export default function Landing() {
       }}
     >
       <h1>Mytinerary</h1>
-      <h3>All your travels accesable in a few seconds</h3>
+      <h3>All your travels accessible in a few seconds</h3>
       {/* <Link to="/cities">
         <button> Find Your City</button>
       </Link> */}
@@ -45,15 +45,24 @@ export default function Landing() {
       </Link>
       {"\n"}
 
-      <img
+      <div
         style={{
-          width: "90%",
-          padding: "10px",
-          borderRadius: "12%"
+          display: "grid",
+          flex: "row",
+          padding: "5px"
         }}
-        src={Logo}
-        alt="logo"
-      />
+      >
+        <img
+          style={{
+            width: "40%",
+            padding: "10px",
+            borderRadius: "12%",
+            justifySelf: "center"
+          }}
+          src={Logo}
+          alt="logo"
+        />
+      </div>
     </div>
   );
 }
