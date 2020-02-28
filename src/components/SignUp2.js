@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Home from "../logos/home.png";
-import { connect } from "react-redux";
-import { createUser } from "../../src/store/actions/signActions";
+import { Link } from "react-router-dom";
+// import { postUser } from "../../store/actions/userActions";
 
-class SignUp extends Component {
+export default class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,58 +11,37 @@ class SignUp extends Component {
       createPass: "",
       repeatPass: "",
       email: "",
-      avatar: "",
-      passwords_dont_match: false
+      avatar: ""
+      // password: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
-    let target = e.target;
-    let value = target.value;
-    let name = target.name;
+  handleChange = input => event => {
+    this.setState({ [input]: event.target.value });
+    console.log(event.target.value);
+  };
 
-    this.setState({
-      [name]: value
-    });
-    console.log(this.state);
+  handleSubmit(event) {
+    alert("WELCOME ON BOARD! > check your e-mail for further instructions");
+    event.preventDefault();
+
+    // const sign = {
+    //   name: this.state.name,
+    //   createPass: this.state.createPass,
+    //   repeatPass: this.state.repeatPass
+    // email: this.state.email,
+    //   avatar: this.state.avatar,
+    //   password: this.state.password
+    // };
+    // console.log(sign);
+    // this.props.dispatch(postSign(sign));
+
+    // post user funtion / to Actions
+    // dispatch
   }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    console.log("this.state.createPass", this.state.createPass);
-    console.log("this.state.repeatPass", this.state.repeatPass);
-    if (
-      this.state.createPass !== "" &&
-      this.state.createPass === this.state.repeatPass
-    ) {
-      console.log("match!");
-      this.props.createUser(this.state);
-    } else {
-      console.log("no match");
-      alert("Passwords do not match");
-    }
-
-    console.log("The form was submitt//  ed with the following data:");
-    console.log(this.state);
-  }
-
-  checkPassword() {
-    if (
-      this.state.createPass === "" ||
-      this.state.createPass !== this.state.repeatPass
-    ) {
-      this.setState({ passwords_dont_match: true });
-    } else {
-      this.setState({ passwords_dont_match: false });
-    }
-  }
-  // DISPACH ,
-  // 1.  put it in a package / call createUser(All usesrInformation)
-  // 2. goes to Action
-  // 3. route
 
   render() {
     return (
@@ -93,7 +71,6 @@ class SignUp extends Component {
             width: "80%"
           }}
         >
-          {/* NAME  */}
           <div
             style={{
               display: "flex"
@@ -104,6 +81,7 @@ class SignUp extends Component {
                 flex: "2"
               }}
             >
+              {/* NAME  */}
               User Name:&nbsp;&nbsp;
             </label>
 
@@ -113,13 +91,11 @@ class SignUp extends Component {
               }}
               name="name"
               type="text"
-              value={this.state.name}
-              onChange={this.handleChange}
+              value={this.state.userName}
+              onChange={this.handleChange("name")}
             />
           </div>
           <br />
-
-          {/* PASS CR.  */}
           <div
             style={{
               display: "flex"
@@ -130,21 +106,20 @@ class SignUp extends Component {
                 flex: "2"
               }}
             >
-              Create Pass:&nbsp;&nbsp;
+              {/* PASS CR.  */}
+              Create Password:&nbsp;&nbsp;
             </label>
             <input
               style={{
                 flex: "3"
               }}
               name="createPass"
-              type="password"
+              type="text"
               value={this.state.createPass}
               onChange={this.handleChange}
             />
           </div>
           <br />
-
-          {/* PASS RPT  */}
           <div
             style={{
               display: "flex"
@@ -155,7 +130,8 @@ class SignUp extends Component {
                 flex: "2"
               }}
             >
-              Repeat Pass:&nbsp;&nbsp;
+              {/* PASS RPT  */}
+              Repeat Password:&nbsp;&nbsp;
             </label>
 
             <input
@@ -163,14 +139,12 @@ class SignUp extends Component {
                 flex: "3"
               }}
               name="repeatPass"
-              type="password"
+              type="text"
               value={this.state.repeatPass}
               onChange={this.handleChange}
             />
           </div>
           <br />
-
-          {/* e-mail  */}
           <div
             style={{
               display: "flex"
@@ -181,6 +155,7 @@ class SignUp extends Component {
                 flex: "2"
               }}
             >
+              {/* e-mail  */}
               e-mail:&nbsp;&nbsp;
             </label>
             <input
@@ -194,7 +169,6 @@ class SignUp extends Component {
             />
           </div>
           <br />
-          {/* AVATAR  */}
           <div
             style={{
               display: "flex"
@@ -205,7 +179,8 @@ class SignUp extends Component {
                 flex: "2"
               }}
             >
-              Picture <i>(link)</i>:&nbsp;&nbsp;
+              {/* AVATAR  */}
+              Profile Picture (link):&nbsp;&nbsp;
             </label>
             <input
               style={{
@@ -213,34 +188,17 @@ class SignUp extends Component {
               }}
               name="avatar"
               type="url"
-              value={this.state.avatar}
-              onChange={this.handleChange}
+              value={this.state.email}
+              onChange={this.profilePic}
             />
           </div>
         </form>
+        <br />
 
-        <button
-          style={{
-            fontSize: "20px",
-            color: "white",
-            background: "grey",
-            borderRadius: "40%"
-            // border: "none"
-          }}
-          onClick={this.handleSubmit}
-        >
-          {" "}
-          &nbsp;Submit&nbsp;{" "}
-        </button>
+        {/* PASS - word */}
+
+        <button onClick={this.handleSubmit}> Submit </button>
       </React.Fragment>
     );
   }
 }
-
-const mapDispatchToProps = dispatch => {
-  return {
-    createUser: user => dispatch(createUser(user))
-  };
-};
-
-export default connect(null, mapDispatchToProps)(SignUp);

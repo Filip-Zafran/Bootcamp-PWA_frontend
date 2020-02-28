@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import RightArrow from "../../src/logos/krug3.png";
-import Logo from "../../src/logos/MYtineraryLogo2.png";
+import RightArrow from "../../src/logos/krug4.png";
 
 export default function Landing() {
   return (
@@ -45,7 +44,7 @@ export default function Landing() {
       </Link>
       {"\n"}
 
-      <div
+      {/* <div
         style={{
           display: "grid",
           flex: "row",
@@ -62,7 +61,7 @@ export default function Landing() {
           src={Logo}
           alt="logo"
         />
-      </div>
+      </div> */}
     </div>
   );
 }

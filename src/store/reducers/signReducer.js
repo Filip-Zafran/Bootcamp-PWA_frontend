@@ -1,7 +1,7 @@
 import {
-  FETCH_SIGN_START,
-  FETCH_SIGN_SUCCESS,
-  FETCH_SIGN_MEH
+  CREATE_USER_START,
+  CREATE_USER_SUCCESS,
+  CREATE_USER_MEH
 } from "../actions/signActions";
 
 const initialState = {
@@ -12,25 +12,26 @@ const initialState = {
 
 export default function signReducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_SIGN_START:
+    case CREATE_USER_START:
       return {
         ...state,
         loading: true,
         error: null
       };
 
-    case FETCH_SIGN_SUCCESS:
+    case CREATE_USER_SUCCESS:
+      console.log("user created", action.payload);
       return {
         ...state,
         loading: false,
-        items: action.payload.cities
+        items: action.payload.signup
       };
 
-    case FETCH_SIGN_MEH:
+    case CREATE_USER_MEH:
       return {
         ...state,
         loading: false,
-        error: action.payload.meh
+        error: action.payload
       };
 
     default:

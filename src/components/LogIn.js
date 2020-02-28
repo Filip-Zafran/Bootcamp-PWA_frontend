@@ -1,8 +1,7 @@
 import React from "react";
+// import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Home from "../logos/home.png";
-
-// probaj kopirat Sign up JS komponentu
 
 export default function Login() {
   return (
