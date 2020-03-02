@@ -4,6 +4,10 @@ import Home from "../logos/home.png";
 import { connect } from "react-redux";
 import { createUser } from "../../src/store/actions/signActions";
 
+// VALIDATION
+// const express = require('express');
+// const app = express();
+
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +24,25 @@ class SignUp extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // VALIDATION
+  // const { check, validationResult } = require('express-validator');
+  // app.post('/user', [
+  //   check('name').isLength({ min: 5 }),
+  //   check('createPass').isLength({ min: 3 })
+  //   check('email').isEmail(),
+  // ], (req, res) => {
+
+  //   const errors = validationResult(req);
+  //   if (!errors.isEmpty()) {
+  //     return res.status(422).json({ errors: errors.array() });
+  //   }
+
+  //       User.create({
+  //     username: req.body.name,
+  //     password: req.body.createPass
+  //   }).then(user => res.json(user));
+  // });
+
   handleChange(e) {
     let target = e.target;
     let value = target.value;
@@ -35,20 +58,35 @@ class SignUp extends Component {
     e.preventDefault();
     console.log("this.state.createPass", this.state.createPass);
     console.log("this.state.repeatPass", this.state.repeatPass);
+
+    // alert fill is complete
+    // if{
+
     if (
       this.state.createPass !== "" &&
-      this.state.createPass === this.state.repeatPass
+      this.state.email !== "" &&
+      this.state.avatar !== "" &&
+      this.state.name !== ""
     ) {
-      console.log("match!");
-      this.props.createUser(this.state);
+      if (this.state.createPass === this.state.repeatPass) {
+        console.log("passwords match!");
+        this.props.createUser(this.state);
+      } else {
+        console.log("no match - passwords");
+        alert("Passwords do not match");
+      }
     } else {
-      console.log("no match");
-      alert("Passwords do not match");
+      alert("Please fill al the fields");
     }
 
     console.log("The form was submitt//  ed with the following data:");
     console.log(this.state);
   }
+  //   else {
+  //   // IF PASSWORDS MATCH then...
+  //   alert("You have created your account - GREAT JOB!");
+  //   }
+  // }
 
   checkPassword() {
     if (
@@ -60,10 +98,6 @@ class SignUp extends Component {
       this.setState({ passwords_dont_match: false });
     }
   }
-  // DISPACH ,
-  // 1.  put it in a package / call createUser(All usesrInformation)
-  // 2. goes to Action
-  // 3. route
 
   render() {
     return (

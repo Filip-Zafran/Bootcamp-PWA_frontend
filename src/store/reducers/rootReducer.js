@@ -6,7 +6,6 @@ import signReducer from "./signReducer";
 const rootReducer = combineReducers({
   cities: citiesReducer,
   itineraries: itineraryReducer,
-  // SignUp: signReducer
   user: signReducer
 });
 
