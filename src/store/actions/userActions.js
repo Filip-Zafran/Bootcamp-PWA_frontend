@@ -1,7 +1,7 @@
 export function createUser(user) {
   return dispatch => {
     dispatch(createUserStart());
-    console.log("user in user action", user);
+
     var urlencoded = new URLSearchParams();
     urlencoded.append("name", user.name);
     urlencoded.append("createPass", user.createPass);

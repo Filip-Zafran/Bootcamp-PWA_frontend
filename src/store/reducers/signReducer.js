@@ -2,7 +2,7 @@ import {
   CREATE_USER_START,
   CREATE_USER_SUCCESS,
   CREATE_USER_MEH
-} from "../actions/signActions";
+} from "../actions/userActions";
 
 const initialState = {
   items: [],
@@ -10,7 +10,7 @@ const initialState = {
   error: null
 };
 
-export default function signReducer(state = initialState, action) {
+export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case CREATE_USER_START:
       return {

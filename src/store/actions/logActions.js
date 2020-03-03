@@ -1,4 +1,4 @@
-export function createUser(log) {
+export function logIn(log) {
   return dispatch => {
     dispatch(logStart());
     console.log("logging start", log);
@@ -6,7 +6,7 @@ export function createUser(log) {
     urlencoded.append("name", log.name);
     urlencoded.append("password", log.password);
 
-    fetch("http://localhost:5000/user/LogIn", {
+    fetch("http://localhost:5000/login/LogIn", {
       method: "POST",
       headers: { "Content-type": "application/x-www-form-urlencoded" },
       body: urlencoded

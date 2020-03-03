@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Home from "../logos/home.png";
 import { connect } from "react-redux";
-import { createUser } from "../../src/store/actions/signActions";
+import { createUser } from "../../src/store/actions/userActions";
 
 // VALIDATION
 // const express = require('express');
