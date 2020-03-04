@@ -1,37 +1,66 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RightArrow from "../../src/logos/krug4.png";
+import Background from "../../src/logos/BACKGROUND_PLANE.png";
+import LoginPlane from "../../src/logos/log in symbol.png";
+import SignupGuy from "../../src/logos/Sign up simbol.png";
 
 export default function Landing() {
   return (
-    <div
-      style={{
-        background: "linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4)"
-      }}
-    >
-      <h1>Mytinerary</h1>
-      <h3>All your travels accessible in a few seconds</h3>
-      {/* <Link to="/cities">
-        <button> Find Your City</button>
-      </Link> */}
-      {"\n"}
-
-      <div
+    <div styles={{ backgroundImage: `url(${Background})` }}>
+      <h1>
+        <span
+          style={{
+            color: "rgba(0, 0, 255, 0.5)"
+          }}
+        >
+          MY
+        </span>
+        <span
+          style={{
+            color: "rgba(255, 255, 0, 0.5)"
+          }}
+        >
+          tinerary
+        </span>
+      </h1>
+      <h3
         style={{
-          display: "grid",
-          flex: "row",
-          padding: "5px"
+          paddingLeft: "20px",
+          paddingRight: "20px",
+          paddingBottom: "40px"
         }}
       >
+        All your travels accessible in a few seconds
+      </h3>
+      {"\n"}
+
+      <div>
+        {" "}
         <Link to="/SignUp">
-          <button> Sign Up</button>
+          <img
+            style={{
+              width: "20%",
+              padding: "20px",
+              float: "left"
+            }}
+            src={SignupGuy}
+            alt="Sign Up"
+          />
         </Link>
         <Link to="/LogIn">
-          <button> Log In </button>
+          <img
+            style={{
+              width: "20%",
+              padding: "20px",
+              float: "left"
+            }}
+            src={LoginPlane}
+            alt="Log in"
+          />
         </Link>
         {"\n"}
       </div>
-
       <Link to="/cities">
         <img
           style={{
@@ -43,25 +72,6 @@ export default function Landing() {
         />
       </Link>
       {"\n"}
-
-      {/* <div
-        style={{
-          display: "grid",
-          flex: "row",
-          padding: "5px"
-        }}
-      >
-        <img
-          style={{
-            width: "40%",
-            padding: "10px",
-            borderRadius: "12%",
-            justifySelf: "center"
-          }}
-          src={Logo}
-          alt="logo"
-        />
-      </div> */}
     </div>
   );
 }

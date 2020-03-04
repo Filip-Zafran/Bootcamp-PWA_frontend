@@ -29,7 +29,7 @@ export default class LogIn extends React.Component {
   }
 
   handleSubmit() {
-    // dispach an action which does post to my backend
+    // 2. dispach an action which does post to my backend
     console.log(this.state);
   }
 
@@ -75,12 +75,13 @@ export default class LogIn extends React.Component {
           <br />
 
           <button
-            style={{
-              fontSize: "20px",
-              color: "white",
-              background: "grey",
-              borderRadius: "40%"
-            }}
+            class="submit"
+            // style={{
+            //   fontSize: "20px",
+            //   color: "white",
+            //   background: "grey",
+            //   borderRadius: "40%"
+            // }}
             onClick={this.handleSubmit}
           >
             {" "}

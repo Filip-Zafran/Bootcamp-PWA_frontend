@@ -1,13 +1,9 @@
 .App {
   text-align: center;
-  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+
 }
 
-/* .homeImg {
-  text-align: left;
-  text-align: start;
-  justify-self: start;
-} */
+
 
 .App-logo {
   height: 40vmin;
