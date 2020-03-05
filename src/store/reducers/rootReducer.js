@@ -7,6 +7,7 @@ const rootReducer = combineReducers({
   cities: citiesReducer,
   itineraries: itineraryReducer,
   user: signReducer
+  // login: logReducer
 });
 
 export default rootReducer;
