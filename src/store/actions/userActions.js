@@ -1,5 +1,6 @@
 export function createUser(user) {
   return dispatch => {
+    console.log("TO SEE CREATE SUER");
     dispatch(createUserStart());
 
     var urlencoded = new URLSearchParams();

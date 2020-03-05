@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Home from "../logos/home.png";
 import { connect } from "react-redux";
 import { createUser } from "../../src/store/actions/userActions";
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 
 // VALIDATION
 // const express = require('express');
@@ -58,6 +60,7 @@ class SignUp extends Component {
     e.preventDefault();
     console.log("this.state.createPass", this.state.createPass);
     console.log("this.state.repeatPass", this.state.repeatPass);
+    console.log("HANDLE SUBMIT TEST");
 
     // alert fill is complete
     // if{
@@ -79,7 +82,7 @@ class SignUp extends Component {
       alert("Please fill al the fields");
     }
 
-    console.log("The form was submitt//  ed with the following data:");
+    console.log("The form was submitted with the following data:");
     console.log(this.state);
   }
   //   else {
@@ -107,7 +110,7 @@ class SignUp extends Component {
             <img
               className="homeImg"
               style={{
-                width: "10%",
+                width: "20%",
                 padding: "10px"
               }}
               src={Home}
@@ -253,19 +256,13 @@ class SignUp extends Component {
           </div>
         </form>
 
-        <button
-          style={{
-            fontSize: "20px",
-            color: "white",
-            background: "grey",
-            borderRadius: "40%"
-            // border: "none"
-          }}
-          onClick={this.handleSubmit}
-        >
-          {" "}
-          &nbsp;Submit&nbsp;{" "}
+        <button type="primary" onClick={this.handleSubmit}>
+          Register
         </button>
+
+        {/* <AwesomeButton type="primary" onClick={this.handleSubmit}>
+          Register
+        </AwesomeButton> */}
       </React.Fragment>
     );
   }

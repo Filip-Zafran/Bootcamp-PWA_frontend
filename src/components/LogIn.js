@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Home from "../logos/home.png";
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 
 // import { connect } from "react-redux";  ??
 // import { Login } from "../../src/store/actions/logActions";
@@ -40,53 +42,67 @@ export default class LogIn extends React.Component {
           <img
             className="homeImg"
             style={{
-              width: "10%",
-              padding: "10px"
+              width: "20%",
+              padding: "10px",
+              paddingBottom: "120px"
             }}
             src={Home}
             alt="home symbol"
           />
         </Link>
-
-        <h1>log in</h1>
+        <h1>Hello sunshine :) </h1>
 
         <div
-        // style={{
-        //   display: "flex"
-        // }}
+          style={{
+            display: "grid"
+          }}
         >
           <div>
-            <label>User Name:&nbsp;&nbsp;</label>
+            <label
+              style={{
+                float: "left",
+                paddingLeft: "15px"
+              }}
+            >
+              User Name:&nbsp;&nbsp;
+            </label>
             <input
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
+              style={{
+                float: "left",
+                paddingLeft: "15px"
+              }}
             />
           </div>
-
           <div>
-            <label>Password:&nbsp;&nbsp;</label>
+            <label
+              style={{
+                float: "left",
+                paddingLeft: "15px"
+              }}
+            >
+              Password:&nbsp;&nbsp;
+            </label>
             <input
               name="createPass"
               value={this.state.createPass}
               onChange={this.handleChange}
+              style={{
+                float: "left",
+                paddingLeft: "15px"
+              }}
             />
           </div>
           <br />
-
-          <button
-            class="submit"
-            // style={{
-            //   fontSize: "20px",
-            //   color: "white",
-            //   background: "grey",
-            //   borderRadius: "40%"
-            // }}
-            onClick={this.handleSubmit}
-          >
-            {" "}
-            &nbsp;Submit&nbsp;{" "}
+          <button type="primary" onClick={this.handleSubmit}>
+            Log in
           </button>
+
+          {/* <AwesomeButton type="primary" onClick={this.handleSubmit}>
+            Log in
+          </AwesomeButton> */}
         </div>
       </div>
     );

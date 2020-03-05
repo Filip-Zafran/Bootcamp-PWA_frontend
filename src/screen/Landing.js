@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import RightArrow from "../../src/logos/krug4.png";
+import RightArrow from "../../src/logos/krug6.png";
 import Background from "../../src/logos/BACKGROUND_PLANE.png";
 import LoginPlane from "../../src/logos/log in symbol.png";
 import SignupGuy from "../../src/logos/Sign up simbol.png";
