@@ -62,9 +62,6 @@ class SignUp extends Component {
     console.log("this.state.repeatPass", this.state.repeatPass);
     console.log("HANDLE SUBMIT TEST");
 
-    // alert fill is complete
-    // if{
-
     if (
       this.state.createPass !== "" &&
       this.state.email !== "" &&
@@ -72,8 +69,9 @@ class SignUp extends Component {
       this.state.name !== ""
     ) {
       if (this.state.createPass === this.state.repeatPass) {
-        console.log("passwords match!");
         this.props.createUser(this.state);
+        alert("Succesfuly sent!");
+        this.props.history.push("/LogIn");
       } else {
         console.log("no match - passwords");
         alert("Passwords do not match");

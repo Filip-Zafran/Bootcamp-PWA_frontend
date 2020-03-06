@@ -22,8 +22,12 @@ export default function userReducer(state = initialState, action) {
     case CREATE_USER_SUCCESS:
       console.log("user created", action.payload);
       return {
+        // SPREAD OPERATOR - makes a copy of after ...
+        // basically state = initialState
         ...state,
+        // we dont change loading
         loading: false,
+        // we add data to items / action up in () / in userAction
         items: action.payload.signup
       };
 
