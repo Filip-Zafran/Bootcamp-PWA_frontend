@@ -32,6 +32,7 @@ export default class LogIn extends React.Component {
 
   handleSubmit() {
     // 2. dispach an action which does post to my backend
+    //  token is sent
     console.log(this.state);
   }
 
