@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Home from "../logos/home.png";
-import { AwesomeButton } from "react-awesome-button";
+// import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 
 // import { connect } from "react-redux";  ??

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import Home from "../logos/home.png";
 import { connect } from "react-redux";
 import { createUser } from "../../src/store/actions/userActions";
-import { AwesomeButton } from "react-awesome-button";
-import "react-awesome-button/dist/styles.css";
+// import { AwesomeButton } from "react-awesome-button";
+// import "react-awesome-button/dist/styles.css";
 
 // VALIDATION
 // const express = require('express');
