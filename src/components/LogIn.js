@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import Home from "../logos/home.png";
 // import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
+import { connect } from "react-redux";
+import { loggedUser } from "../../src/store/actions/logActions";
 
-// import { connect } from "react-redux";  ??
-// import { Login } from "../../src/store/actions/logActions";
-
-export default class LogIn extends React.Component {
+class LogIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,10 +30,23 @@ export default class LogIn extends React.Component {
   }
 
   handleSubmit() {
-    // 2. dispach an action which does post to my backend
-    //  token is sent
-    console.log(this.state);
+    if (this.state.createPass !== "" && this.state.name !== "") {
+      this.props.loggedUser(this.state);
+      this.props.history.push("/cities");
+    } else {
+      // add condition if add if ()
+      console.log("no match - passwords");
+      alert("Password is incorrect");
+      this.props.history.push("/LogIn"); // test
+    }
   }
+  // } else   {
+  //     alert("Please fill both fields"); }
+
+  // }
+
+  // 2. ACTIONS then decode
+  // 3. in redux define who is logged in...
 
   render() {
     return (
@@ -51,8 +63,7 @@ export default class LogIn extends React.Component {
             alt="home symbol"
           />
         </Link>
-        <h1>Hello sunshine :) </h1>
-
+        <h1>Hello sunshine </h1>
         <div
           style={{
             display: "grid"
@@ -77,35 +88,43 @@ export default class LogIn extends React.Component {
               }}
             />
           </div>
-          <div>
-            <label
-              style={{
-                float: "left",
-                paddingLeft: "15px"
-              }}
-            >
-              Password:&nbsp;&nbsp;
-            </label>
-            <input
-              name="createPass"
-              value={this.state.createPass}
-              onChange={this.handleChange}
-              style={{
-                float: "left",
-                paddingLeft: "15px"
-              }}
-            />
-          </div>
-          <br />
-          <button type="primary" onClick={this.handleSubmit}>
-            Log in
-          </button>
+        </div>
+        <div>
+          <label
+            style={{
+              float: "left",
+              paddingLeft: "15px"
+            }}
+          >
+            Password:&nbsp;&nbsp;
+          </label>
+          <input
+            name="createPass"
+            value={this.state.createPass}
+            onChange={this.handleChange}
+            style={{
+              float: "left",
+              paddingLeft: "15px"
+            }}
+          />
+        </div>
+        <br />
+        <button type="primary" onClick={this.handleSubmit}>
+          Log in
+        </button>
 
-          {/* <AwesomeButton type="primary" onClick={this.handleSubmit}>
+        {/* <AwesomeButton type="primary" onClick={this.handleSubmit}>
             Log in
           </AwesomeButton> */}
-        </div>
       </div>
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loggedUser: user => dispatch(loggedUser(user))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(LogIn);
