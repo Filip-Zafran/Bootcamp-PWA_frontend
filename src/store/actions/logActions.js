@@ -2,15 +2,15 @@ export function loggedUser(log) {
   return dispatch => {
     dispatch(logStart());
     console.log("logging start", log);
-    // var urlencoded = new URLSearchParams();
-    // urlencoded.append("name", log.name);
-    // urlencoded.append("password", log.password);
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("name", log.name);
+    urlencoded.append("createPass", log.createPass);
+    // const body = JSON.stringify({ name: log.name, createPass: log.createPass });
 
     fetch("http://localhost:5000/login/LogIn", {
       method: "POST",
       headers: { "Content-type": "application/x-www-form-urlencoded" },
-      // body: urlencoded
-      body: JSON.stringify({ name: log.name, createPass: log.createPass })
+      body: urlencoded
     })
       .then(res => {
         console.log("res", res);
@@ -26,7 +26,7 @@ export function loggedUser(log) {
           })
         );
 
-        // docode
+        // dEcode
 
         console.log(res.token);
         if (res.error) {
