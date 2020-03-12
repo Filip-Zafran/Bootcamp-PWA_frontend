@@ -1,8 +1,10 @@
 import React from "react";
+
 import { connect } from "react-redux";
 import { fetchCities } from "../store/actions/cityActions";
 import { Link } from "react-router-dom";
 import Home from "../logos/home.png";
+import logReducer from "../store/reducers/logReducer";
 
 class Cities extends React.Component {
   componentDidMount() {
@@ -25,6 +27,7 @@ class Cities extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const filteredCities = this.props.cities.filter(cityObject => {
       return cityObject.city
         .toLowerCase()
@@ -45,10 +48,15 @@ class Cities extends React.Component {
           />
         </Link>
 
+        <h1> hi {this.props.currentUser.name}</h1>
+
+        {/* {isAutheticated
+        :
+        // login */}
+
         <p style={{ color: "blue" }}>
           <i>My next stop is...{this.props.match.params.key}</i>
         </p>
-
         <input
           style={{
             fontSize: "20px",
@@ -59,7 +67,6 @@ class Cities extends React.Component {
           value={this.state.search}
           onChange={this.updateSearch.bind(this)}
         />
-
         {this.props.loading ? (
           <div> loading... </div>
         ) : (
@@ -93,7 +100,10 @@ class Cities extends React.Component {
 const mapStateToProps = state => ({
   cities: state.cities.items,
   loading: state.cities.loading,
-  error: state.cities.error
+  error: state.cities.error,
+  // when logged in
+  isAuthenticated: state.login.isAuthenticated,
+  currentUser: state.login.currentUser
 });
 const mapDispatchToProps = dispatch => {
   return {

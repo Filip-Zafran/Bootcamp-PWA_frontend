@@ -1,3 +1,5 @@
+import jwt_decode from "jwt-decode";
+
 export function loggedUser(log) {
   return dispatch => {
     dispatch(logStart());
@@ -5,6 +7,8 @@ export function loggedUser(log) {
     var urlencoded = new URLSearchParams();
     urlencoded.append("name", log.name);
     urlencoded.append("createPass", log.createPass);
+
+    // does not work for no reason
     // const body = JSON.stringify({ name: log.name, createPass: log.createPass });
 
     fetch("http://localhost:5000/login/LogIn", {
@@ -26,13 +30,24 @@ export function loggedUser(log) {
           })
         );
 
-        // dEcode
+        //
+        const decodedToken = jwt_decode(res.token);
+        console.log(decodedToken);
+        dispatch(setCurrentUser(decodedToken));
+        if (res.error) {
+          console.log("loginUser error");
+          console.log(res.error);
+        }
+
+        //
 
         console.log(res.token);
         if (res.error) {
           throw res.error;
         }
         dispatch(logSuccess(res));
+
+        // wat dis ?
       })
       .catch(error => {
         dispatch(logMeh(error));
@@ -59,13 +74,14 @@ export const logMeh = error => ({
   }
 });
 
-// export const setCurrentUser = res.token => ({ //
-//   type: SET_CURRENT_USER,
-//   payload: res.token
-// });
-
-export const SET_CURRENT_USER = "SET_CURRENT_USER";
-
 export const LOG_START = "LOG_START";
 export const LOG_SUCCESS = "LOG_SUCCESS";
 export const LOG_MEH = "LOG_MEH";
+
+// copy pasted amy
+export const setCurrentUser = decodedToken => ({
+  type: SET_CURRENT_USER,
+  payload: decodedToken
+});
+
+export const SET_CURRENT_USER = "SET_CURRENT_USER";

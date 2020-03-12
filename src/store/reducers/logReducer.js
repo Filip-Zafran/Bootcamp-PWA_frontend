@@ -1,8 +1,15 @@
-import { LOG_START, LOG_SUCCESS, LOG_MEH } from "../actions/logActions";
+import {
+  LOG_START,
+  LOG_SUCCESS,
+  LOG_MEH,
+  SET_CURRENT_USER
+} from "../actions/logActions";
+
+const empty = require("is-empty");
 
 const initialState = {
-  // loggedUsed: {},
-  // isAuthenticated: false ???
+  currentUser: {},
+  isAuthenticated: false,
   items: [],
   loading: false,
   error: null
@@ -32,8 +39,14 @@ export default function logReducer(state = initialState, action) {
         error: action.payload
       };
 
-    // case SET CURRENT USER
-    //   return ...state
+    // copy pasted
+    case SET_CURRENT_USER:
+      return {
+        ...state,
+        isAuthenticated: !empty(action.payload),
+        // action.payload = decoded token
+        currentUser: action.payload
+      };
 
     default:
       return state;
