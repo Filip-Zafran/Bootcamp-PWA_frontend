@@ -85,3 +85,27 @@ export const setCurrentUser = decodedToken => ({
 });
 
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
+
+export const setAuthentication = () => ({
+  type: SET_AUTHENTICATION,
+  payload: false
+});
+
+export const SET_AUTHENTICATION = "SET_AUTHENTICATION";
+
+export function logoutuser() {
+  return dispatch => {
+    fetch("http://localhost:5000/login/LogOut")
+      .then(res => {
+        localStorage.removeItem("tokenName");
+        dispatch(setCurrentUser({}));
+        dispatch(setAuthentication);
+        return res;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+}
+
+export const LOGOUT_USER = "LOGOUT_USER";

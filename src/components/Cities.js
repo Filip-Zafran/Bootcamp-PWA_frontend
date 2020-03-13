@@ -5,6 +5,8 @@ import { fetchCities } from "../store/actions/cityActions";
 import { Link } from "react-router-dom";
 import Home from "../logos/home.png";
 import logReducer from "../store/reducers/logReducer";
+import Logout from "../logos/logout.png";
+import { logoutuser } from "../store/actions/logActions";
 
 class Cities extends React.Component {
   componentDidMount() {
@@ -26,8 +28,22 @@ class Cities extends React.Component {
     this.setState({ search: event.target.value.substr(0, 10) });
   }
 
+  handleLogout = e => {
+    e.preventDefault();
+    this.props.logoutuser();
+    this.props.history.push("/");
+  };
+
+  // handleLogout() {
+  //   this.props.logoutuser();
+  //   this.props.history.push("/");
+  // }
+
   render() {
     console.log(this.props);
+
+    const isAuthenticated = this.props.isAuthenticated;
+
     const filteredCities = this.props.cities.filter(cityObject => {
       return cityObject.city
         .toLowerCase()
@@ -48,14 +64,26 @@ class Cities extends React.Component {
           />
         </Link>
 
+        <Link to="/">
+          {/* FUCTION TO LOG OUT reset curent user to empty object */}
+          {isAuthenticated ? (
+            <img
+              onClick={this.handleLogout}
+              style={{
+                width: "10%",
+                padding: "10px"
+              }}
+              src={Logout}
+              alt="Log out button"
+            />
+          ) : (
+            <h1>nothing here</h1>
+          )}
+        </Link>
+
         <h1> hi {this.props.currentUser.name}</h1>
-
-        {/* {isAutheticated
-        :
-        // login */}
-
         <p style={{ color: "blue" }}>
-          <i>My next stop is...{this.props.match.params.key}</i>
+          <i>Your next stop is...{this.props.match.params.key}</i>
         </p>
         <input
           style={{
@@ -105,9 +133,11 @@ const mapStateToProps = state => ({
   isAuthenticated: state.login.isAuthenticated,
   currentUser: state.login.currentUser
 });
+
 const mapDispatchToProps = dispatch => {
   return {
-    fetchCities: () => dispatch(fetchCities())
+    fetchCities: () => dispatch(fetchCities()),
+    logoutuser: () => dispatch(logoutuser())
   };
 };
 

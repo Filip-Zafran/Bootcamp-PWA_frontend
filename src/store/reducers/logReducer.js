@@ -2,11 +2,14 @@ import {
   LOG_START,
   LOG_SUCCESS,
   LOG_MEH,
-  SET_CURRENT_USER
+  SET_CURRENT_USER,
+  SET_AUTHENTICATION,
+  LOGOUT_USER
 } from "../actions/logActions";
 
 const empty = require("is-empty");
 
+//what is in redux / store
 const initialState = {
   currentUser: {},
   isAuthenticated: false,
@@ -46,6 +49,12 @@ export default function logReducer(state = initialState, action) {
         isAuthenticated: !empty(action.payload),
         // action.payload = decoded token
         currentUser: action.payload
+      };
+
+    case SET_AUTHENTICATION:
+      return {
+        ...state,
+        isAuthenticated: action.payload
       };
 
     default:
