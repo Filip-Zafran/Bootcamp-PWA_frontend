@@ -35,6 +35,7 @@ class Itineraries extends React.Component {
     //       .includes(this.state.search.toLowerCase());
     //   }
     // );
+    const favouriteItineraries = this.props.favouriteItineraries;
 
     return (
       <div>
@@ -94,6 +95,17 @@ class Itineraries extends React.Component {
                 {places.price}, {places.hashtags}{" "}
               </p>
               <div>
+                <div className="favourite-btn">
+                  <span
+                    style={
+                      favouriteItineraries.includes(places._id)
+                        ? { color: "red" }
+                        : { color: "blue" }
+                    }
+                  >
+                    heart
+                  </span>{" "}
+                </div>
                 <img
                   style={{ width: "85%" }}
                   src={places.url}
@@ -108,37 +120,12 @@ class Itineraries extends React.Component {
       </div>
     );
   }
-  //         <input
-  //           type="text"
-  //           value={this.state.search}
-  //           onChange={this.updateSearch.bind(this)}
-  //         />
-
-  //         {/* {this.props.loading ? (
-  //           <div> loading... </div>
-  //         ) : (
-  //           // <div>
-  //           //   {filteredItineraries &&
-  //           //     filteredItineraries.map(places => (
-  //           //       <div key={places._id}>
-  //           //         {places.title}, {places.rating}, {places.duration},{" "}
-  //           //         {places.price}, {places.hashtags}{" "}
-  //           //         <div>
-  //           //           <img src={places.url} alt="cool_activities" />
-  //           //         </div>
-  //           //       </div>
-  //           //     ))}
-  //           // </div>
-  //         // )}
-  //       </div> */}
-  //     );
-  //   }
-  // }
 }
 
 const mapStateToProps = state => {
   console.log("state", state);
   return {
+    favouriteItineraries: state.login.currentUser.favouriteItineraries,
     itineraries: state.itineraries.items,
     loading: state.itineraries.loading,
     error: state.itineraries.errors

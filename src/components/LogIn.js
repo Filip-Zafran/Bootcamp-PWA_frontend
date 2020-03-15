@@ -6,6 +6,7 @@ import "react-awesome-button/dist/styles.css";
 import { connect } from "react-redux";
 import { loggedUser } from "../../src/store/actions/logActions";
 
+
 class LogIn extends React.Component {
   constructor(props) {
     super(props);
@@ -45,7 +46,6 @@ class LogIn extends React.Component {
 
   // }
 
-  // 2. ACTIONS then decode
   // 3. in redux define who is logged in...
 
   render() {
@@ -63,7 +63,7 @@ class LogIn extends React.Component {
             alt="home symbol"
           />
         </Link>
-        <h1>Hello sunshine </h1>
+        <h1>Hello sunshine :) </h1>
         <div
           style={{
             display: "grid"

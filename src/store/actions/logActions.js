@@ -92,7 +92,6 @@ export const setAuthentication = () => ({
 });
 
 export const SET_AUTHENTICATION = "SET_AUTHENTICATION";
-
 export function logoutuser() {
   return dispatch => {
     fetch("http://localhost:5000/login/LogOut")
