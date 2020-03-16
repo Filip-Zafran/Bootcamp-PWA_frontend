@@ -30,7 +30,6 @@ export function loggedUser(log) {
           })
         );
 
-        //
         const decodedToken = jwt_decode(res.token);
         console.log(decodedToken);
         dispatch(setCurrentUser(decodedToken));
@@ -39,15 +38,13 @@ export function loggedUser(log) {
           console.log(res.error);
         }
 
-        //
-
         console.log(res.token);
         if (res.error) {
           throw res.error;
         }
         dispatch(logSuccess(res));
 
-        // wat dis ?
+        // EXPLAIN THIS SYNTAX
       })
       .catch(error => {
         dispatch(logMeh(error));

@@ -95,7 +95,7 @@ class Itineraries extends React.Component {
                 {places.price}, {places.hashtags}{" "}
               </p>
               <div>
-                <div className="favourite-btn">
+                <div className="favourite-btn" onClick={}>
                   <span
                     style={
                       favouriteItineraries.includes(places._id)
